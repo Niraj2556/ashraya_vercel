@@ -24,11 +24,9 @@ const MyProfile = () => {
             showAlert('Server Error', 'error');
           });
       
-    }, [])
+    }, [showAlert])
     
-    const back = () => {
-        navigate('/')
-    }
+
     
   return (
     <div className='super-main' style={{minHeight: '100vh'}}>

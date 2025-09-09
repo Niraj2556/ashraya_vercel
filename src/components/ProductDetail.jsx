@@ -15,7 +15,7 @@ const ProductDetail = () => {
     const[showModal, setShowModal] = useState(false)
     const[modalImage, setModalImage] = useState('')
     const[isZoomed, setIsZoomed] = useState(false)
-    const[showFullDescription, setShowFullDescription] = useState(false)
+
     const[contactLoading, setContactLoading] = useState(false)
     const[showContactAlert, setShowContactAlert] = useState(false)
     const[showDescriptionPopup, setShowDescriptionPopup] = useState(false)

@@ -14,7 +14,7 @@ import {FaHeart } from "react-icons/fa";
 
 const LikedProducts = () => {
   const [products, setProducts] = useState([]);
-  const [cproducts, setcproducts] = useState([]);
+
   const [search, setSearch] = useState('');
 
   const [likedProducts, setLikedProducts] = useState([]);
@@ -50,7 +50,7 @@ const LikedProducts = () => {
         console.log(err);
         showAlert('Server Error', 'error');
       });
-  }, [refresh]); // Empty dependency array to run the effect only once on component mount
+  }, [refresh, showAlert]); // Empty dependency array to run the effect only once on component mount
 
   const handlesearch = (value) => {
     setSearch(value);

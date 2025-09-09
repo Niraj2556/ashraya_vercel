@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Header from './Header';
 import axios from 'axios';
-import Categories from './Categories';
+
 import ConfirmDialog from './ConfirmDialog';
 import './Home.css';
 import { Link } from 'react-router-dom';
@@ -15,7 +15,7 @@ import { useAlert } from '../contexts/AlertContext';
 
 const MyProducts = () => {
   const [products, setProducts] = useState([]);
-  const [cproducts, setcproducts] = useState([]);
+
   const [search, setSearch] = useState('');
   const [refresh, setRefresh] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
@@ -39,38 +39,9 @@ const MyProducts = () => {
         console.log(err);
         showAlert('Server Error', 'error');
       });
-  }, [refresh]); // Empty dependency array to run the effect only once on component mount
-
-  const handlesearch = (value) => {
-    setSearch(value);
-  };
-
-  const handleclick = () => {
-    let filteredproducts = products.filter((items) => {
-      if (items.pname.includes(search) || items.pdesc.includes(search) || items.category.includes(search)) {
-        return items;
-      }
-      return false;
-    });
-    setcproducts(filteredproducts);
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    window.location.href = '/login';
-  };
+  }, [refresh, showAlert]); // Empty dependency array to run the effect only once on component mount
 
 
-  const handleCategory = (value) =>{
-    console.log(value)
-    let filteredproducts = products.filter((items) => {
-      if (items.category === value) {
-        return items;
-      }
-      return false;
-    });
-    setcproducts(filteredproducts);
-  }
 
   const handleLike = (productId) =>{
     

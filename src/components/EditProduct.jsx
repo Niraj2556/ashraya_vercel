@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Header from './Header'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import categories from './CategoriesList'
 import { useAlert } from '../contexts/AlertContext'
@@ -25,7 +25,7 @@ const EditProduct = () => {
         if(! localStorage.getItem('token')){
             navigate('/login')
         }
-    },[])
+    },[navigate])
 
     const p = useParams();
     useEffect(() => {
@@ -50,7 +50,7 @@ const EditProduct = () => {
             console.log(err);
             showAlert('Server Error', 'error');
           });
-      }, []);
+      }, [p.productId, showAlert]);
 
 
     const handleApi = ()=>{
@@ -95,9 +95,7 @@ const EditProduct = () => {
        
     }
 
-    const back = () =>{
-        navigate('/my-product')
-    }
+
   return (
     <div className='super-main' style={{minHeight: '100vh'}}>
         <Header />

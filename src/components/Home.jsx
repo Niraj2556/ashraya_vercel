@@ -53,7 +53,7 @@ const Home = () => {
         console.log(err);
         showAlert('Server Error', 'error');
       });
-  }, [refresh]); // Empty dependency array to run the effect only once on component mount
+  }, [refresh, showAlert]); // Empty dependency array to run the effect only once on component mount
   const handlesearch = (value) => {
     setSearch(value);
   };

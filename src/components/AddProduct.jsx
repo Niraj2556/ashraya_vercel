@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Header from './Header'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import categories from './CategoriesList'
 import { useAlert } from '../contexts/AlertContext'
@@ -25,7 +25,7 @@ const AddProduct = () => {
         if(! localStorage.getItem('token')){
             navigate('/login')
         }
-    },[])
+    },[navigate])
 
 
     const handleApi = ()=>{
@@ -91,9 +91,7 @@ const AddProduct = () => {
         })
     }
 
-    const back = () =>{
-        navigate('/')
-    }
+
   return (
     <div className='super-main' style={{minHeight: '100vh'}}>
         <Header />
