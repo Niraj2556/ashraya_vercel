@@ -16,7 +16,7 @@ import { useAlert } from '../contexts/AlertContext';
 const MyProducts = () => {
   const [products, setProducts] = useState([]);
 
-  const [search, setSearch] = useState('');
+
   const [refresh, setRefresh] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
