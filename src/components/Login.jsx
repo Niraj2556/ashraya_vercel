@@ -39,18 +39,18 @@ const Login = () => {
         })  
       }
 
-
       const back = () => {
         navigate('/')
       }
 
 
+
+
+
   return (
     <div className='super-main'>
       <div className='main-body'>
-        <button onClick={back} className='contact-btn' style={{margin: '20px'}}>← Go Back</button>
-        
-        <div className='signup-main'>
+        <div className='signup-main' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh'}}>
           <div className='signup-body'>
             <h1 style={{color: "#333", fontSize: "24px", marginBottom: "24px", fontWeight: "600", textAlign: "center"}}>Welcome Back</h1>
             
@@ -80,6 +80,23 @@ const Login = () => {
                 Sign In
               </button>
               <Link className='btn btn-success' to="/signup" style={{width: '100%', textAlign: 'center'}}>Don't have an account? Register</Link>
+              <button 
+                onClick={back} 
+                style={{
+                  width: '100%',
+                  background: 'transparent',
+                  color: '#667eea',
+                  border: '1px solid #e2e8f0',
+                  padding: '12px 20px',
+                  borderRadius: '8px',
+                  fontSize: '14px',
+                  fontWeight: '500',
+                  cursor: 'pointer',
+                  marginTop: '8px'
+                }}
+              >
+                ← Back to Home
+              </button>
             </div>
           </div>
         </div>

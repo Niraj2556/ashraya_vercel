@@ -40,19 +40,22 @@ const Home = () => {
       });
 
 
-      const url2 = 'http://localhost:4000/liked-products';
-      let data = {userId: localStorage.getItem('userId')};
-    axios
-      .post(url2, data)
-      .then((res) => {
-        if (res.data.products) {
-          setLikedProducts(res.data.products);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        showAlert('Server Error', 'error');
-      });
+      const userId = localStorage.getItem('userId');
+      if (userId) {
+        const url2 = 'http://localhost:4000/liked-products';
+        let data = {userId};
+        axios
+          .post(url2, data)
+          .then((res) => {
+            if (res.data.products) {
+              setLikedProducts(res.data.products);
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+            showAlert('Server Error', 'error');
+          });
+      }
   }, [refresh, showAlert]); // Empty dependency array to run the effect only once on component mount
   const handlesearch = (value) => {
     setSearch(value);
