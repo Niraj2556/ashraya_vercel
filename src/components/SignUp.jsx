@@ -86,7 +86,7 @@ const SignUp = () => {
     <div className='super-main' style={{minHeight: '100vh'}}>
       <div className='main-body'>
         <div className='signup-main' style={{position: 'relative'}}>
-          <button onClick={back} className='contact-btn' style={{position: 'absolute', top: '20px', left: '20px'}}>← Go Back</button>
+          <button onClick={back} style={{position: 'absolute', top: '20px', left: '20px', padding: '8px 16px', fontSize: '14px', fontWeight: '500', background: 'transparent', color: '#667eea', border: '1px solid #e2e8f0', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px'}}>← Go Back</button>
           <div className='signup-body'>
             <h1 style={{color: "#333", fontSize: "24px", marginBottom: "24px", fontWeight: "600", textAlign: "center"}}>Create Account</h1>
             
