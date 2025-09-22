@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import categories from './CategoriesList'
 import { useAlert } from '../contexts/AlertContext'
+import API_BASE_URL from '../config/api'
 import "./Home.css"
 
 const EditProduct = () => {
@@ -29,7 +30,7 @@ const EditProduct = () => {
 
     const p = useParams();
     useEffect(() => {
-        const url = 'http://localhost:4000/get-product/' + p.productId;
+        const url = `${API_BASE_URL}/get-product/${p.productId}`;
         axios
           .get(url)
           .then((res) => {
@@ -70,7 +71,7 @@ const EditProduct = () => {
     
     
     
-            const url = 'http://localhost:4000/edit-product';
+            const url = `${API_BASE_URL}/edit-product`;
             axios.post(url, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
@@ -184,7 +185,7 @@ const EditProduct = () => {
     onChange={(e)=>{setpimage(e.target.files[0])}}
     style={{padding: '16px 20px', borderRadius: '16px', border: '2px dashed #cbd5e1', fontSize: '16px', background: '#f8fafc', cursor: 'pointer', width: '100%', marginBottom: '12px'}}
     />
-    {poldimage && <img src={`http://localhost:4000/${poldimage}`} alt='Current' style={{width: '100%', height: '120px', objectFit: 'cover', borderRadius: '12px', border: '2px solid #e2e8f0'}}/>}
+    {poldimage && <img src={`${API_BASE_URL}/${poldimage}`} alt='Current' style={{width: '100%', height: '120px', objectFit: 'cover', borderRadius: '12px', border: '2px solid #e2e8f0'}}/>}
     </div>
     
     <div>
@@ -196,7 +197,7 @@ const EditProduct = () => {
     onChange={(e)=>{setpimage2(e.target.files[0])}}
     style={{padding: '16px 20px', borderRadius: '16px', border: '2px dashed #cbd5e1', fontSize: '16px', background: '#f8fafc', cursor: 'pointer', width: '100%', marginBottom: '12px'}}
     />
-    {poldimage2 && <img src={`http://localhost:4000/${poldimage2}`} alt='Current' style={{width: '100%', height: '120px', objectFit: 'cover', borderRadius: '12px', border: '2px solid #e2e8f0'}}/>}
+    {poldimage2 && <img src={`${API_BASE_URL}/${poldimage2}`} alt='Current' style={{width: '100%', height: '120px', objectFit: 'cover', borderRadius: '12px', border: '2px solid #e2e8f0'}}/>}
     </div>
     </div>
     </div>

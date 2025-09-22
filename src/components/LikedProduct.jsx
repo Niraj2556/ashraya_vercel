@@ -7,6 +7,7 @@ import axios from 'axios';
 import './Home.css';
 import { useNavigate } from 'react-router-dom';
 import { useAlert } from '../contexts/AlertContext';
+import API_BASE_URL from '../config/api';
 
 import {FaHeart } from "react-icons/fa";
 
@@ -22,7 +23,7 @@ const LikedProducts = () => {
   const { showAlert } = useAlert();
 
   useEffect(() => {
-    const url = 'http://localhost:4000/liked-products';
+    const url = `${API_BASE_URL}/liked-products`;
 
     let data = {userId : localStorage.getItem('userId')}
 
@@ -37,7 +38,7 @@ const LikedProducts = () => {
         showAlert('Server Error', 'error');
       });
 
-      const url2 = 'http://localhost:4000/liked-products';
+      const url2 = `${API_BASE_URL}/liked-products`;
       let datas = {userId: localStorage.getItem('userId')};
     axios
       .post(url2, datas)
@@ -84,7 +85,7 @@ const LikedProducts = () => {
       return;
     }
 
-    const url = 'http://localhost:4000/like-product';
+    const url = `${API_BASE_URL}/like-product`;
     const data = {userId, productId}  
     axios
       .post(url, data)
@@ -112,7 +113,7 @@ const LikedProducts = () => {
       return;
     }
 
-    const url = 'http://localhost:4000/dislike-product';
+    const url = `${API_BASE_URL}/dislike-product`;
     const data = {userId, productId}  
     axios
       .post(url, data)
@@ -157,7 +158,7 @@ const LikedProducts = () => {
                   </div>
                   
                   <img
-                    src={`http://localhost:4000/${item.pimage}`}
+                    src={`${API_BASE_URL}/${item.pimage}`}
                     className='card-img-top'
                     alt='product'
                     style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: '16px 16px 0 0' }}

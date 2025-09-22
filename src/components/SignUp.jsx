@@ -4,6 +4,7 @@ import { useState } from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useAlert } from '../contexts/AlertContext';
+import API_BASE_URL from '../config/api';
 
 
 const SignUp = () => {
@@ -55,7 +56,7 @@ const SignUp = () => {
   }
 
 
-    const url = 'http://localhost:4000/signup';
+    const url = `${API_BASE_URL}/signup`;
     const data = {username, password, email, mobile}
     
     axios.post(url,data).then((res) => {

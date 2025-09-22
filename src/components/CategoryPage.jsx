@@ -5,6 +5,7 @@ import Header from './Header';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Categories from './Categories';
+import API_BASE_URL from '../config/api';
 import './Home.css';
 import { AiOutlineClear } from "react-icons/ai";
 import {FaHeart } from "react-icons/fa";
@@ -29,7 +30,7 @@ const CategoryPage = () => {
   
 
   useEffect(() => {
-    const url = 'http://localhost:4000/get-products?catName=' + params.catName;
+    const url = `${API_BASE_URL}/get-products?catName=${params.catName}`;
     axios
       .get(url)
       .then((res) => {
@@ -43,7 +44,7 @@ const CategoryPage = () => {
       });
 
 
-      const url2 = 'http://localhost:4000/liked-products';
+      const url2 = `${API_BASE_URL}/liked-products`;
       let data = {userId: localStorage.getItem('userId')};
     axios
       .post(url2, data)
@@ -72,7 +73,7 @@ const CategoryPage = () => {
     // console.log(localStorage.getItem('userLoc'))
 
 
-    const url = 'http://localhost:4000/search?search=' + search + '&loc=' + localStorage.getItem('userLoc') ;
+    const url = `${API_BASE_URL}/search?search=${search}&loc=${localStorage.getItem('userLoc')}` ;
     axios
       .get(url)
       .then((res) => { 
@@ -142,7 +143,7 @@ const CategoryPage = () => {
       return;
     }
 
-    const url = 'http://localhost:4000/like-product';
+    const url = `${API_BASE_URL}/like-product`;
     const data = {userId, productId}  
     axios
       .post(url, data)
@@ -167,7 +168,7 @@ const CategoryPage = () => {
       return;
     }
 
-    const url = 'http://localhost:4000/dislike-product';
+    const url = `${API_BASE_URL}/dislike-product`;
     const data = {userId, productId}  
     axios
       .post(url, data)
@@ -222,7 +223,7 @@ const CategoryPage = () => {
             }
             </div>
             <img
-              src={`http://localhost:4000/${item.pimage}`}
+              src={`${API_BASE_URL}/${item.pimage}`}
               className='card-img-top'
               alt='product'
             />
@@ -256,7 +257,7 @@ const CategoryPage = () => {
             }
             </div>
             <img
-              src={`http://localhost:4000/${item.pimage}`}
+              src={`${API_BASE_URL}/${item.pimage}`}
               className='card-img-top'
               alt='product'
             />
