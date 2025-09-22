@@ -7,6 +7,7 @@ import {useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Categories from './Categories';
 import { useAlert } from '../contexts/AlertContext';
+import API_BASE_URL from '../config/api';
 import './Home.css';
 
 
@@ -26,7 +27,7 @@ const Home = () => {
 
 
   useEffect(() => {
-    const url = 'http://localhost:4000/get-products';
+    const url = `${API_BASE_URL}/get-products`;
     axios
       .get(url)
       .then((res) => {
@@ -42,7 +43,7 @@ const Home = () => {
 
       const userId = localStorage.getItem('userId');
       if (userId) {
-        const url2 = 'http://localhost:4000/liked-products';
+        const url2 = `${API_BASE_URL}/liked-products`;
         let data = {userId};
         axios
           .post(url2, data)
@@ -67,7 +68,7 @@ const Home = () => {
       return;
     }
 
-    const url = 'http://localhost:4000/search?search=' + encodeURIComponent(search.trim()) + '&loc=' + userLoc;
+    const url = `${API_BASE_URL}/search?search=${encodeURIComponent(search.trim())}&loc=${userLoc}`;
     axios
       .get(url)
       .then((res) => {
@@ -117,7 +118,7 @@ const Home = () => {
       return;
     }
 
-    const url = 'http://localhost:4000/like-product';
+    const url = `${API_BASE_URL}/like-product`;
     const data = {userId, productId}  
     axios
       .post(url, data)
@@ -145,7 +146,7 @@ const Home = () => {
       return;
     }
 
-    const url = 'http://localhost:4000/dislike-product';
+    const url = `${API_BASE_URL}/dislike-product`;
     const data = {userId, productId}  
     axios
       .post(url, data)
@@ -216,7 +217,7 @@ const Home = () => {
           }
           </div>
             <img
-              src={`http://localhost:4000/${item.pimage}`}
+              src={`${API_BASE_URL}/${item.pimage}`}
               className='card-img-top'
               alt='product'
               style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: '20px 20px 0 0' }}
@@ -254,7 +255,7 @@ const Home = () => {
 
            
             <img
-              src={`http://localhost:4000/${item.pimage}`}
+              src={`${API_BASE_URL}/${item.pimage}`}
               className='card-img-top'
               alt='product'
               style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: '20px 20px 0 0' }}

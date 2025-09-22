@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import {FaHeart } from "react-icons/fa";
 import { useAlert } from '../contexts/AlertContext';
+import API_BASE_URL from '../config/api';
 
 
 
@@ -23,7 +24,7 @@ const MyProducts = () => {
   const { showAlert } = useAlert();
 
   useEffect(() => {
-    const url = 'http://localhost:4000/my-product';
+    const url = `${API_BASE_URL}/my-product`;
 
     let data = {userId : localStorage.getItem('userId')}
 
@@ -47,7 +48,7 @@ const MyProducts = () => {
     
     let userId = localStorage.getItem('userId');
 
-    const url = 'http://localhost:4000/like-product';
+    const url = `${API_BASE_URL}/like-product`;
     const data = {userId, productId}  
     axios
       .post(url, data)
@@ -77,7 +78,7 @@ const MyProducts = () => {
   }
 
   const confirmDelete = () => {
-    const url = 'http://localhost:4000/delete-product';
+    const url = `${API_BASE_URL}/delete-product`;
     const data = {userId: localStorage.getItem('userId'), pid: deleteId}  
     axios
       .post(url, data)
@@ -130,12 +131,12 @@ const MyProducts = () => {
                 
                 <div className='images-container'>
                   <img
-                    src={`http://localhost:4000/${item.pimage}`}
+                    src={`${API_BASE_URL}/${item.pimage}`}
                     className='product-image main-image'
                     alt='Room view 1'
                   />
                   <img
-                    src={`http://localhost:4000/${item.pimage2}`}
+                    src={`${API_BASE_URL}/${item.pimage2}`}
                     className='product-image secondary-image'
                     alt='Room view 2'
                   />

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import categories from './CategoriesList'
 import { useAlert } from '../contexts/AlertContext'
+import API_BASE_URL from '../config/api'
 import "./Home.css"
 
 
@@ -73,7 +74,7 @@ const AddProduct = () => {
             if(pimage2) formData.append('pimage2', pimage2);
             formData.append('userId', localStorage.getItem('userId'));
     
-            const url = 'http://localhost:4000/add-product';
+            const url = `${API_BASE_URL}/add-product`;
             axios.post(url, formData)
             .then((res) =>{
                 if(res.data.message){

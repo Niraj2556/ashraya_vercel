@@ -3,6 +3,7 @@ import Header from './Header'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useAlert } from '../contexts/AlertContext'
+import API_BASE_URL from '../config/api'
 
 
 const MyProfile = () => {
@@ -12,7 +13,7 @@ const MyProfile = () => {
     const { showAlert } = useAlert()
     
     useEffect(()=>{
-        const url = 'http://localhost:4000/my-profile/' + localStorage.getItem('userId');
+        const url = `${API_BASE_URL}/my-profile/${localStorage.getItem('userId')}`;
         axios
           .get(url)
           .then((res) => {

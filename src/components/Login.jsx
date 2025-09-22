@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react';
 import axios from 'axios';
 import { useAlert } from '../contexts/AlertContext';
+import API_BASE_URL from '../config/api';
 import './Extra.css';
 
 
@@ -16,7 +17,7 @@ const Login = () => {
 
 
     const handleApi = () => {
-        const url = 'http://localhost:4000/login';
+        const url = `${API_BASE_URL}/login`;
         const data = {username, password}
         
         axios.post(url,data)

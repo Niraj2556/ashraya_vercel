@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import Header from './Header'
 import { useAlert } from '../contexts/AlertContext'
+import API_BASE_URL from '../config/api'
 import './Home.css';
 
 const ProductDetail = () => {
@@ -35,7 +36,7 @@ const ProductDetail = () => {
     useEffect(() => {
         if (!p.productId) return;
         
-        const url = 'http://localhost:4000/get-product/' + p.productId;
+        const url = `${API_BASE_URL}/get-product/${p.productId}`;
         axios
           .get(url)
           .then((res) => {
@@ -59,7 +60,7 @@ const ProductDetail = () => {
         
         setTimeout(() => {
           setShowContactAlert(false)
-          const url = 'http://localhost:4000/get-user/' + addedBy;
+          const url = `${API_BASE_URL}/get-user/${addedBy}`;
           axios
             .get(url)
             .then((res) => {
@@ -115,13 +116,13 @@ const ProductDetail = () => {
             <div className='product-container'>
               <div className='images-section'>
                 <div className='image-gallery'>
-                  <div className='main-image' onClick={() => openImageModal('http://localhost:4000/' + product.pimage)}>
-                    <img src={'http://localhost:4000/' + product.pimage} alt={product.pname} />
+                  <div className='main-image' onClick={() => openImageModal(`${API_BASE_URL}/${product.pimage}`)}>
+                    <img src={`${API_BASE_URL}/${product.pimage}`} alt={product.pname} />
                     <div className='category-overlay'>{product.category}</div>
                   </div>
                   {product.pimage2 && (
-                    <div className='secondary-image' onClick={() => openImageModal('http://localhost:4000/' + product.pimage2)}>
-                      <img src={'http://localhost:4000/' + product.pimage2} alt={`${product.pname} view 2`} />
+                    <div className='secondary-image' onClick={() => openImageModal(`${API_BASE_URL}/${product.pimage2}`)}>
+                      <img src={`${API_BASE_URL}/${product.pimage2}`} alt={`${product.pname} view 2`} />
                     </div>
                   )}
                 </div>
